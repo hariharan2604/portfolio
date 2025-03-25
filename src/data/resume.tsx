@@ -85,7 +85,7 @@ export const DATA = {
     {
       title: "AI-based Traffic Control System",
       dates: '2025',
-      href: "",
+      href: "https://github.com/hariharan2604/AI-Based-Traffic-Control",
       active: true,
       description:
         "Developed an AI-driven traffic management system leveraging YOLO (You Only Look Once) for real-time object detection and Ant Colony Optimization (ACO) to optimize traffic signal timings. The system significantly reduces congestion by dynamically adjusting signal durations based on live traffic density.",
@@ -101,7 +101,7 @@ export const DATA = {
       video: "",
     }, {
       title: "Post Invest Pro",
-      href: "",
+      href: "https://post-invest-pro-frontend.vercel.app/",
       dates: "2024",
       active: true,
       description:
@@ -132,7 +132,7 @@ export const DATA = {
     {
       title: "Smart Campus Management Dashboard",
       dates: '2023',
-      href: "",
+      href: "https://github.com/hariharan2604/Smart-Campus-Manager",
       active: true,
       description:
         "Developed a deep learning-powered Smart Campus Management Dashboard utilizing YOLO and Faster R-CNN for real-time resource monitoring and optimization. The AI system analyzes campus activities, improving resource allocation efficiency by 20%. The project includes an interactive Next.js dashboard for visualization and control.",
