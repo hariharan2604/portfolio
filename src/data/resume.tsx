@@ -110,14 +110,11 @@ export const DATA = {
       technologies: [
         "Next.js",
         "Typescript",
-        "PostgreSQL",
-        "Prisma",
+        "MySQL",
+        "Sequelize",
         "TailwindCSS",
-        "Stripe",
-        "Shadcn UI",
-        "Machine Learning",
-        "Python",
-        "FastAPI",
+        "Node.js",
+        "Nginx",
       ],
       links: [
         {
