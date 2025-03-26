@@ -78,7 +78,8 @@ export const DATA = {
       degree: "B.Tech in Information Technology",
       logoUrl: "/vit.png",
       start: "July 2021",
-      end: "July 2025",
+      end: "July 2025", description:
+        "Pursuing a Bachelor’s degree in Information Technology with a focus on software development, algorithms, and system design. Gained hands-on experience in full-stack development, cloud computing, and database management through coursework and projects. Actively participating in hackathons and tech communities to enhance problem-solving skills and collaboration.",
     },
   ],
   projects: [
@@ -97,7 +98,7 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "/traffic.png",
+      image: "/traffic.webp",
       video: "",
     }, {
       title: "Post Invest Pro",
@@ -125,7 +126,7 @@ export const DATA = {
           icon: <Icons.github className='size-3' />,
         }
       ],
-      image: "/earning.png",
+      image: "/investment.webp",
       video: "",
     },
 
@@ -153,7 +154,7 @@ export const DATA = {
           icon: <Icons.github className='size-3' />,
         },
       ],
-      image: "/campus.jpg",
+      image: "/campus_manager.webp",
       video: "",
     },
   ],
