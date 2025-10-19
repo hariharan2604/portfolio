@@ -62,11 +62,12 @@ export const DATA = {
   work: [
     {
       company: "Tata Consultancy Services",
-      href: "https://www.novactech.com/",
+      href: "https://www.tcs.com/",
       location: "Bengaluru, India",
       title: "Systems Engineer",
       logoUrl: "/TCS-logo-black-CMYK.svg",
       start: "Aug 2025",
+      end:"Present",
       description:
         "Currently part of TCS’s Initial Learning Program (ILP), where I’m building a strong foundation in software development, system design, and enterprise technologies. I’m gaining hands-on experience with Java, Spring Boot, SQL, and web technologies, while learning agile practices and preparing to contribute to live client projects.",
       technologies: ["Java","MySQL", "HTML", "CSS", "Git", "Spring Boot", "Angular","Agile Methodologies"],
