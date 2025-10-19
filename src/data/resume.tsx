@@ -8,9 +8,9 @@ export const DATA = {
   location: "India",
   locationLink: "https://www.google.com/maps/place/India",
   description:
-    "Innovative and results-driven software engineer with a strong foundation in computer science principles and hands-on experience in backend development.",
+    "Innovative and results-driven software engineer with a strong foundation in computer science principles and hands-on experience in fullstack development.",
   summary:
-    "I am a software engineer passionate about building high-performance solutions and optimizing complex systems. I have experience in backend development, API optimization, and SaaS applications.",
+    "I’m a technology enthusiast, passionate about software development, system design, and creating efficient, scalable solutions. I love learning continuously, taking on new challenges, and contributing to projects that make a meaningful impact.",
   avatarUrl: "/me.jpg",
   skills: [
     "Java",
@@ -19,10 +19,12 @@ export const DATA = {
     "Python",
     "Typescript",
     "JavaScript",
+    "Angular",
     "React.js",
     "Next.js",
     "Node.js",
     "Express.js",
+    "Spring Boot",
     "Docker",
     "MySQL",
     "MongoDB",
@@ -58,6 +60,17 @@ export const DATA = {
   },
 
   work: [
+    {
+      company: "Tata Consultancy Services",
+      href: "https://www.novactech.com/",
+      location: "Bengaluru, India",
+      title: "Systems Engineer",
+      logoUrl: "/TCS-logo-black-CMYK.svg",
+      start: "Aug 2025",
+      description:
+        "Currently part of TCS’s Initial Learning Program (ILP), where I’m building a strong foundation in software development, system design, and enterprise technologies. I’m gaining hands-on experience with Java, Spring Boot, SQL, and web technologies, while learning agile practices and preparing to contribute to live client projects.",
+      technologies: ["Java","MySQL", "HTML", "CSS", "Git", "Spring Boot", "Angular","Agile Methodologies"],
+    },
     {
       company: "Novac Technology Solutions",
       href: "https://www.novactech.com/",
