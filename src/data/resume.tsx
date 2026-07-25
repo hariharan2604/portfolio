@@ -31,9 +31,7 @@ export const DATA = {
     "AWS",
     "Git",
   ],
-  navbar: [
-    { href: "/", icon: HomeIcon, label: "Home" },
-  ],
+  navbar: [{ href: "/", icon: HomeIcon, label: "Home" }],
   contact: {
     email: "hariharanjayachandran04@gmail.com",
     tel: "+91 9342970272",
@@ -63,14 +61,21 @@ export const DATA = {
     {
       company: "Tata Consultancy Services",
       href: "https://www.tcs.com/",
-      location: "Bengaluru, India",
+      location: "Chennai, India",
       title: "Systems Engineer",
       logoUrl: "/TCS-logo-black-CMYK.svg",
       start: "Aug 2025",
-      end:"Present",
+      end: "Present",
       description:
-        "Currently part of TCS’s Initial Learning Program (ILP), where I’m building a strong foundation in software development, system design, and enterprise technologies. I’m gaining hands-on experience with Java, Spring Boot, SQL, and web technologies, while learning agile practices and preparing to contribute to live client projects.",
-      technologies: ["Java","MySQL", "HTML", "CSS", "Git", "Spring Boot", "Angular","Agile Methodologies"],
+        "Designed and developed enterprise-grade backend systems using Java and Spring Boot, delivering scalable microservices and RESTful API solutions for large-scale client engagements. Built and maintained RESTful APIs supporting high-throughput workflows with a focus on performance, reliability, and clean interface design across distributed services.",
+      technologies: [
+        "Java",
+        "Spring Boot",
+        "REST APIs",
+        "Microservices",
+        "SQL",
+        "Git",
+      ],
     },
     {
       company: "Novac Technology Solutions",
@@ -82,7 +87,16 @@ export const DATA = {
       end: "Dec 2023",
       description:
         "Optimized API performance, achieving a 40% improvement in response times. Implemented efficient query optimizations, caching mechanisms, and payload reductions, increasing user satisfaction by 25%. Replaced Webpack with ESbuild, reducing bundling times by 80% and accelerating deployment cycles.",
-      technologies: ["Express.js", "MySQL", "HTML", "CSS", "jQuery", "Git", "ESBuild", "Nginx"],
+      technologies: [
+        "Express.js",
+        "MySQL",
+        "HTML",
+        "CSS",
+        "jQuery",
+        "Git",
+        "ESBuild",
+        "Nginx",
+      ],
     },
   ],
   education: [
@@ -92,19 +106,26 @@ export const DATA = {
       degree: "B.Tech in Information Technology",
       logoUrl: "/vit.png",
       start: "July 2021",
-      end: "July 2025", description:
+      end: "July 2025",
+      description:
         "Pursuing a Bachelor’s degree in Information Technology with a focus on software development, algorithms, and system design. Gained hands-on experience in full-stack development, cloud computing, and database management through coursework and projects. Actively participating in hackathons and tech communities to enhance problem-solving skills and collaboration.",
     },
   ],
   projects: [
     {
       title: "AI-based Traffic Control System",
-      dates: '2025',
+      dates: "2025",
       href: "https://github.com/hariharan2604/AI-Based-Traffic-Control",
       active: true,
       description:
         "Developed an AI-driven traffic management system leveraging YOLO (You Only Look Once) for real-time object detection and Ant Colony Optimization (ACO) to optimize traffic signal timings. The system significantly reduces congestion by dynamically adjusting signal durations based on live traffic density.",
-      technologies: ["Python", "YOLO", "Ant Colony Optimization", "OpenCV", "Deep Learning"],
+      technologies: [
+        "Python",
+        "YOLO",
+        "Ant Colony Optimization",
+        "OpenCV",
+        "Deep Learning",
+      ],
       links: [
         {
           type: "GitHub",
@@ -114,7 +135,8 @@ export const DATA = {
       ],
       image: "/traffic.webp",
       video: "",
-    }, {
+    },
+    {
       title: "Post Invest Pro",
       href: "https://post-invest-pro-frontend.vercel.app/",
       dates: "2024",
@@ -134,8 +156,8 @@ export const DATA = {
         {
           type: "GitHub",
           href: "https://github.com/hariharan2604/PostInvest-Pro",
-          icon: <Icons.github className='size-3' />,
-        }
+          icon: <Icons.github className="size-3" />,
+        },
       ],
       image: "/investment.webp",
       video: "",
@@ -143,7 +165,7 @@ export const DATA = {
 
     {
       title: "Smart Campus Management Dashboard",
-      dates: '2023',
+      dates: "2023",
       href: "https://github.com/hariharan2604/Smart-Campus-Manager",
       active: true,
       description:
@@ -162,7 +184,7 @@ export const DATA = {
         {
           type: "GitHub",
           href: "https://github.com/hariharan2604/Smart-Campus-Manager",
-          icon: <Icons.github className='size-3' />,
+          icon: <Icons.github className="size-3" />,
         },
       ],
       image: "/campus_manager.webp",
