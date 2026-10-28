@@ -1,6 +1,6 @@
 import { ProjectCard } from "@/components/project-card";
 import { ResumeCard } from "@/components/resume-card";
-import { EngineeringConsole } from "@/components/engineering-console";
+import { EngineeringConsoleLoader } from "@/components/engineering-console-loader";
 import { TypingName } from "@/components/typing-name";
 import { Badge } from "@/components/ui/badge";
 import { DATA } from "@/data/resume";
@@ -106,8 +106,8 @@ export default function Page() {
               src={DATA.avatarUrl}
               alt={DATA.name}
               fill
-              priority
-              sizes="(max-width: 1024px) 80vw, 360px"
+              preload
+              sizes="(max-width: 420px) calc(100vw - 2.5rem), 384px"
               className="object-cover object-[50%_25%] grayscale-[12%] transition duration-500 group-hover:scale-[1.025] group-hover:grayscale-0"
             />
             <div className="absolute inset-x-0 bottom-0 flex items-center justify-between bg-foreground/90 px-4 py-3 font-mono text-[10px] uppercase tracking-wider text-background">
@@ -129,7 +129,7 @@ export default function Page() {
           title="A closer look under the hood."
           description="Explore the architecture, project capabilities, and tools behind my work."
         />
-        <EngineeringConsole />
+        <EngineeringConsoleLoader />
       </section>
 
       <section id="about" className="scroll-mt-28">

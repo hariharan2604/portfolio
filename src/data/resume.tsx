@@ -11,7 +11,7 @@ export const DATA = {
     "Java backend engineer focused on API design, secure service workflows, and practical full-stack products.",
   summary:
     "I build APIs and service workflows with Java and Spring, alongside full-stack applications using Node.js, React, and Next.js. My projects include secure resource booking, expense sharing, investment operations, and live water-and-power monitoring. I focus on clear API boundaries, reliable data handling, and features that solve practical problems.",
-  avatarUrl: "/profile.jpg",
+  avatarUrl: "/profile-upright.webp",
   resumeUrl: "/hariharan-jayachandran-resume.pdf",
   featuredSkills: ["Java", "Spring Boot", "REST APIs", "MySQL", "Docker"],
   skillGroups: [

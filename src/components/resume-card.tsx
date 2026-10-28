@@ -2,7 +2,6 @@
 
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
 import { ArrowUpRight, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -99,31 +98,34 @@ export const ResumeCard = ({
         />
       </button>
       {description && (
-        <motion.div
-          initial={false}
-          animate={{
-            opacity: isExpanded ? 1 : 0,
-            height: isExpanded ? "auto" : 0,
-          }}
-          transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-          className="overflow-hidden"
+        <div
+          aria-hidden={!isExpanded}
+          inert={!isExpanded}
+          className={cn(
+            "grid transition-[grid-template-rows,opacity] duration-200 ease-out motion-reduce:transition-none",
+            isExpanded
+              ? "grid-rows-[1fr] opacity-100"
+              : "grid-rows-[0fr] opacity-0"
+          )}
         >
-          <div className="ml-14 border-t border-border pt-4 pb-2 pr-4 text-sm leading-6 text-muted-foreground">
-            <p>{description}</p>
-            {href && (
-              <Link
-                href={href}
-                target="_blank"
-                rel="noreferrer"
-                onClick={(event) => event.stopPropagation()}
-                className="mt-3 inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wide text-primary transition-colors duration-200 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-              >
-                Visit website
-                <ArrowUpRight aria-hidden="true" className="size-3.5" />
-              </Link>
-            )}
+          <div className="min-h-0 overflow-hidden">
+            <div className="ml-14 border-t border-border pt-4 pb-2 pr-4 text-sm leading-6 text-muted-foreground">
+              <p>{description}</p>
+              {href && (
+                <Link
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={(event) => event.stopPropagation()}
+                  className="mt-3 inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wide text-primary transition-colors duration-200 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                >
+                  Visit website
+                  <ArrowUpRight aria-hidden="true" className="size-3.5" />
+                </Link>
+              )}
+            </div>
           </div>
-        </motion.div>
+        </div>
       )}
     </article>
   );

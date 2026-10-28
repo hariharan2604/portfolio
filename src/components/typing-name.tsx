@@ -1,11 +1,30 @@
 "use client";
 
-import { useReducedMotion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
+
+const reducedMotionQuery = "(prefers-reduced-motion: reduce)";
+
+function subscribeToReducedMotion(onChange: () => void) {
+  const mediaQuery = window.matchMedia(reducedMotionQuery);
+  mediaQuery.addEventListener("change", onChange);
+  return () => mediaQuery.removeEventListener("change", onChange);
+}
+
+function getReducedMotionSnapshot() {
+  return window.matchMedia(reducedMotionQuery).matches;
+}
+
+function getServerReducedMotionSnapshot() {
+  return false;
+}
 
 export function TypingName({ name }: { name: string }) {
-  const [typedName, setTypedName] = useState("");
-  const prefersReducedMotion = useReducedMotion();
+  const [typedName, setTypedName] = useState(name.slice(0, 1));
+  const prefersReducedMotion = useSyncExternalStore(
+    subscribeToReducedMotion,
+    getReducedMotionSnapshot,
+    getServerReducedMotionSnapshot
+  );
 
   useEffect(() => {
     if (prefersReducedMotion) {
