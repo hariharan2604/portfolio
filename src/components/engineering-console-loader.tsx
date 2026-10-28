@@ -8,30 +8,75 @@ function EngineeringConsoleSkeleton() {
     <section
       aria-label="Loading engineering profile"
       aria-busy="true"
-      className="console-shell min-h-[20.5rem] overflow-hidden border border-foreground/70 bg-card"
+      className="console-shell relative overflow-hidden border border-foreground/70 bg-card"
     >
-      <div className="flex h-12 items-center justify-between border-b border-foreground/70 bg-foreground px-4 sm:px-5">
-        <div className="h-2 w-28 animate-pulse bg-background/20 motion-reduce:animate-none" />
-        <div className="h-2 w-20 animate-pulse bg-background/20 motion-reduce:animate-none" />
-      </div>
-      <div className="grid min-h-[17.5rem] md:grid-cols-[13rem_1fr]">
-        <div className="flex gap-2 border-b border-border p-3 md:flex-col md:border-b-0 md:border-r">
-          {[0, 1, 2].map((item) => (
-            <div
-              key={item}
-              className="h-9 flex-1 animate-pulse border border-border bg-muted/60 motion-reduce:animate-none md:flex-none"
-            />
-          ))}
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-foreground/70 bg-foreground px-4 py-3 text-background sm:px-5">
+        <div className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.12em]">
+          <span className="flex items-center gap-2 text-primary">
+            <span className="console-pulse size-1.5 bg-primary motion-reduce:animate-none" />
+            System profile
+          </span>
+          <span className="text-background/40">/</span>
+          <span className="text-background/65">Read only</span>
         </div>
-        <div className="grid content-start gap-4 p-4 sm:grid-cols-2 sm:p-6">
-          {[0, 1, 2, 3].map((item) => (
-            <div key={item} className="border-t border-border py-3">
-              <div className="mb-3 h-2 w-1/3 animate-pulse bg-muted motion-reduce:animate-none" />
-              <div className="h-3 w-4/5 animate-pulse bg-muted/70 motion-reduce:animate-none" />
+        <span className="font-mono text-[10px] text-background/55">
+          HJ_PROFILE.SYS
+        </span>
+      </div>
+      <div className="grid md:grid-cols-[13rem_1fr]">
+        <div className="flex gap-1 border-b border-border p-2 md:flex-col md:border-b-0 md:border-r md:p-3">
+          {["Architecture", "Project scope", "Delivery"].map((label, index) => (
+            <div
+              key={label}
+              className={`flex min-w-0 flex-1 items-center justify-center gap-1.5 border px-1.5 py-2.5 font-mono text-[9px] uppercase tracking-wide sm:gap-2 sm:px-2 sm:text-[10px] md:w-full md:flex-none md:justify-start md:gap-3 md:px-3 ${
+                index === 0
+                  ? "border-primary/50 bg-primary/10 text-primary"
+                  : "border-transparent text-muted-foreground"
+              }`}
+            >
+              <span className="shrink-0 text-[9px] opacity-60">0{index + 1}</span>
+              <span className="truncate">{label}</span>
+              {index === 0 && (
+                <span aria-hidden="true" className="ml-auto hidden md:inline">
+                  →
+                </span>
+              )}
             </div>
           ))}
         </div>
+        <div className="min-h-56 p-4 sm:p-6">
+          <div className="mb-5 flex flex-wrap items-center justify-between gap-2">
+            <p className="font-mono text-[10px] text-muted-foreground sm:text-xs">
+              <span className="text-primary">$</span> system.architecture --overview
+            </p>
+            <p className="border border-border px-2 py-1 font-mono text-[9px] uppercase tracking-wide text-muted-foreground">
+              Resource Booking API
+            </p>
+          </div>
+          <div className="grid gap-x-8 sm:grid-cols-2">
+            {["Runtime", "Security", "Persistence", "Caching"].map((label, index) => (
+              <div
+                key={label}
+                className="grid grid-cols-[2rem_1fr] gap-2 border-t border-border py-3"
+              >
+                <span className="font-mono text-[9px] text-primary/70">
+                  0{index + 1}
+                </span>
+                <div>
+                  <p className="font-mono text-[9px] uppercase tracking-wide text-muted-foreground">
+                    {label}
+                  </p>
+                  <div
+                    aria-hidden="true"
+                    className="mt-2 h-3 w-4/5 animate-pulse bg-muted/70 motion-reduce:animate-none"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
+      <div aria-hidden="true" className="console-scanline motion-reduce:hidden" />
     </section>
   );
 }

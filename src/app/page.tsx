@@ -13,6 +13,9 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 
+const profileBlurDataUrl =
+  "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAADwBACdASoYAB4APwFys1GrJqSiqAqpYCAJagCdM1XJpdeaGAIbbYwZyX67AlnrLAAAyw6rdyiW9nXoP1etXIlw4MrdtbbLqk+z5sV1hBiZGob9uXbbW9e2m0jpGenqwarpZFYfcfNnTZmU0eAAAA==";
+
 function SectionHeading({
   number,
   eyebrow,
@@ -76,6 +79,7 @@ export default function Page() {
             <Link
               href={DATA.resumeUrl}
               download
+              prefetch={false}
               className="button-secondary"
             >
               Resume
@@ -107,6 +111,8 @@ export default function Page() {
               alt={DATA.name}
               fill
               preload
+              placeholder="blur"
+              blurDataURL={profileBlurDataUrl}
               sizes="(max-width: 420px) calc(100vw - 2.5rem), 384px"
               className="object-cover object-[50%_25%] grayscale-[12%] transition duration-500 group-hover:scale-[1.025] group-hover:grayscale-0"
             />
