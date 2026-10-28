@@ -11,7 +11,7 @@ export const DATA = {
     "Innovative and results-driven software engineer with a strong foundation in computer science principles and hands-on experience in fullstack development.",
   summary:
     "I’m a technology enthusiast, passionate about software development, system design, and creating efficient, scalable solutions. I love learning continuously, taking on new challenges, and contributing to projects that make a meaningful impact.",
-  avatarUrl: "/me.jpg",
+  avatarUrl: "/profile.jpg",
   skills: [
     "Java",
     "C",
@@ -65,7 +65,7 @@ export const DATA = {
       title: "Systems Engineer",
       logoUrl: "/TCS-logo-black-CMYK.svg",
       start: "Aug 2025",
-      end: "Present",
+      end: "Aug 2026",
       description:
         "Designed and developed enterprise-grade backend systems using Java and Spring Boot, delivering scalable microservices and RESTful API solutions for large-scale client engagements. Built and maintained RESTful APIs supporting high-throughput workflows with a focus on performance, reliability, and clean interface design across distributed services.",
       technologies: [
