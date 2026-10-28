@@ -51,7 +51,7 @@ export default function Page() {
         <div className="max-w-2xl">
           <div className="mb-9 flex items-center justify-between border-b border-border pb-3 font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground sm:text-xs">
             <span>Portfolio / Software engineering</span>
-            <span>India · 2026</span>
+            <span>{DATA.location} · {new Date().getFullYear()}</span>
           </div>
           <p className="section-eyebrow">Java backend engineer</p>
           <h1 className="mt-4 text-5xl font-semibold leading-[0.95] tracking-[-0.06em] sm:text-7xl lg:text-[5.5rem]">
@@ -116,8 +116,8 @@ export default function Page() {
             </div>
           </div>
           <div className="mt-2 flex justify-between font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-            <span>Engineer · India</span>
-            <span>2026</span>
+            <span>Engineer · {DATA.location}</span>
+            <span>{new Date().getFullYear()}</span>
           </div>
         </div>
       </section>
@@ -127,7 +127,7 @@ export default function Page() {
           number="01"
           eyebrow="System readout"
           title="A closer look under the hood."
-          description="Explore the engineering principles, measurable outcomes, and tools behind my work."
+          description="Explore the architecture, project capabilities, and tools behind my work."
         />
         <EngineeringConsole />
       </section>
@@ -161,21 +161,22 @@ export default function Page() {
           number="03"
           eyebrow="Selected work"
           title="Projects built to solve real problems."
-          description="A selection of things I have designed and developed, from intelligent systems to practical web applications."
+          description="Selected work across investment operations, backend APIs, computer vision, and real-time monitoring—showcasing product thinking and end-to-end execution."
         />
         <div className="grid gap-x-8 gap-y-10 md:auto-rows-fr md:grid-cols-2 lg:gap-x-10">
           {DATA.projects.map((project, index) => (
             <ProjectCard
               key={project.title}
               index={index + 1}
+              featured={index === 0}
               href={project.href}
               title={project.title}
               description={project.description}
               dates={project.dates}
               meta={"meta" in project ? project.meta : undefined}
               tags={project.technologies}
-              image={project.image}
-              video={project.video}
+              image={"image" in project ? project.image : undefined}
+              video={"video" in project ? project.video : undefined}
               links={project.links}
             />
           ))}

@@ -8,9 +8,9 @@ export const DATA = {
   location: "India",
   locationLink: "https://www.google.com/maps/place/India",
   description:
-    "Java backend engineer building secure, scalable microservices and REST APIs with Spring Boot, Spring Data, and SQL.",
+    "Java backend engineer focused on API design, secure service workflows, and practical full-stack products.",
   summary:
-    "Java backend engineer with experience building and maintaining enterprise-grade microservices and REST APIs for large-scale e-commerce systems. Strong in Java, Spring Boot, Spring MVC, Spring Data JPA/Hibernate, Spring Security, SQL, and DB2/MySQL. Improved API performance and build efficiency through query optimization, caching, payload improvements, and streamlined bundling. Experienced with Docker, AWS, Git, API testing, and Agile delivery.",
+    "I build APIs and service workflows with Java and Spring, alongside full-stack applications using Node.js, React, and Next.js. My projects include secure resource booking, expense sharing, investment operations, and live water-and-power monitoring. I focus on clear API boundaries, reliable data handling, and features that solve practical problems.",
   avatarUrl: "/profile.jpg",
   resumeUrl: "/hariharan-jayachandran-resume.pdf",
   featuredSkills: ["Java", "Spring Boot", "REST APIs", "MySQL", "Docker"],
@@ -103,7 +103,7 @@ export const DATA = {
       start: "Aug 2025",
       end: "Aug 2026",
       description:
-        "Designed and developed enterprise backend systems for a large-scale e-commerce client, contributing to 4–6 microservices and REST APIs. Built high-throughput services with Java, Spring Boot, Spring MVC, and Spring Data JPA/Hibernate; implemented persistence using DB2 and optimized SQL queries. Applied Spring Security for authentication and access control, and collaborated with QA, analysts, and product owners in Agile ceremonies. Used Git and established engineering practices to maintain production applications.",
+        "Contributed to backend services and REST APIs for a large-scale e-commerce platform using Java and Spring. Worked with Spring Data JPA/Hibernate and DB2 for persistence and query optimization, applied Spring Security for access control, and collaborated with QA and product teams in an Agile workflow.",
       technologies: [
         "Java",
         "Spring Boot",
@@ -127,7 +127,7 @@ export const DATA = {
       start: "Aug 2023",
       end: "Dec 2023",
       description:
-        "Improved API response times by 40% through SQL query optimization, caching, and efficient payload handling, contributing to a 25% increase in user satisfaction. Replaced Webpack with ESBuild, reducing bundling time by 80% and accelerating CI/CD execution. Developed and maintained backend functionality with Express.js and MySQL, working with Git and Nginx.",
+        "Worked on backend features with Express.js and MySQL, including query optimization, caching, and payload handling. Replaced Webpack with ESBuild to streamline bundling and CI/CD, and worked with Git and Nginx.",
       technologies: [
         "Express.js",
         "MySQL",
@@ -149,10 +149,72 @@ export const DATA = {
       start: "July 2021",
       end: "July 2025",
       description:
-        "Bachelor of Technology in Information Technology. Graduated with a CGPA of 8.76/10, building a foundation in software engineering, algorithms, databases, and system design.",
+        "Completed a Bachelor of Technology in Information Technology, building a foundation in software engineering, algorithms, databases, and system design.",
     },
   ],
   projects: [
+    {
+      title: "Post Invest Pro",
+      href: "https://post-invest-pro-frontend.vercel.app/",
+      dates: "2024",
+      meta: "FinTech Platform",
+      active: true,
+      description:
+        "Built an investment operations platform with agent authentication and workflows for customers, investment schemes, and receipts. The Next.js and React interface connects to a Node.js and Express API backed by Sequelize and MySQL.",
+      technologies: [
+        "Next.js",
+        "React",
+        "Sass",
+        "Node.js",
+        "Express.js",
+        "Sequelize",
+        "MySQL",
+        "JWT",
+        "Redis",
+        "Nginx",
+      ],
+      links: [
+        {
+          type: "Frontend",
+          href: "https://github.com/hariharan2604/PostInvest-Pro-Frontend",
+          icon: <Icons.github className="size-3" />,
+        },
+        {
+          type: "Backend",
+          href: "https://github.com/hariharan2604/PostInvest-Pro",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+    },
+    {
+      title: "Resource Booking System",
+      dates: "",
+      meta: "Backend API",
+      active: true,
+      href: "https://github.com/hariharan2604/resource-booking-system",
+      description:
+        "Built a REST API for booking rooms, vehicles, and equipment. Implemented JWT authentication and role-based access control with Spring Security, profile-driven H2/MySQL persistence, conditional Redis caching, and typed configuration. The service also exposes API documentation and health/metrics endpoints.",
+      technologies: [
+        "Java 21",
+        "Spring Boot 4",
+        "Spring Security",
+        "JWT",
+        "H2 / MySQL",
+        "JPA / Hibernate",
+        "Redis",
+        "JUnit",
+        "Mockito",
+        "Docker",
+        "Gradle",
+      ],
+      links: [
+        {
+          type: "GitHub",
+          href: "https://github.com/hariharan2604/resource-booking-system",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+    },
     {
       title: "Splitwise MVP API",
       dates: "2026",
@@ -169,10 +231,10 @@ export const DATA = {
         },
       ],
       description:
-        "Built an expense-sharing API with Node.js, Express, Sequelize, and MySQL. Supports equal, exact, and percentage expense splits, expense activity over date ranges, and per-currency balances.",
+        "Built an expense-sharing API with Node.js, Express, Sequelize, and MySQL. Supports user and expense management, equal, exact, and percentage splits, date-range activity, and balances by counterparty and currency. Authentication is intentionally outside this MVP.",
       technologies: [
         "Node.js",
-        "Express",
+        "Express.js",
         "Sequelize",
         "MySQL",
         "REST APIs",
@@ -201,57 +263,29 @@ export const DATA = {
       description:
         "Built a live dashboard for two homes that displays water-tank levels, instant power, pump status, and monthly electricity usage. The React interface receives sensor readings over WebSocket and fetches monthly usage from an Express and MongoDB API.",
       technologies: [
-        "React",
+        "React.js",
         "Node.js",
-        "Express",
+        "Express.js",
         "MongoDB",
         "WebSocket",
         "IoT",
       ],
     },
     {
-      title: "Resource Booking System",
-      dates: "",
-      meta: "Backend API",
-      active: true,
-      href: "https://github.com/hariharan2604/resource-booking-system",
-      image: undefined,
-      video: "",
-      links: [
-        {
-          type: "GitHub",
-          href: "https://github.com/hariharan2604/resource-booking-system",
-          icon: <Icons.github className="size-3" />,
-        },
-      ],
-      description:
-        "Built a resource-booking backend with Java 21 and Spring Boot 4, exposing REST APIs to manage users, resources, and bookings. Added JWT authentication and role-based access control with Spring Security, layered controllers, services, and repositories, and MySQL persistence using Spring Data JPA/Hibernate. Added JUnit and Mockito tests for booking validation, and containerized the service with Docker.",
-      technologies: [
-        "Java 21",
-        "Spring Boot 4",
-        "Spring Security",
-        "JWT",
-        "MySQL",
-        "JPA / Hibernate",
-        "JUnit",
-        "Mockito",
-        "Docker",
-        "Gradle",
-      ],
-    },
-    {
-      title: "AI-based Traffic Control System",
+      title: "AI Traffic Signal Control",
       dates: "2025",
       meta: "Computer Vision",
       href: "https://github.com/hariharan2604/AI-Based-Traffic-Control",
       active: true,
       description:
-        "Built a computer-vision prototype that detects real-time vehicle density with Python, OpenCV, and YOLO to adjust traffic signals. Added MQTT-based emergency-vehicle notifications.",
+        "Built a video-driven traffic-control system using YOLO-based vehicle processing, MQTT for signal and emergency events, and WebSockets for live streams. The application coordinates video processing and signal cycling across configured camera feeds.",
       technologies: [
         "Python",
         "OpenCV",
-        "YOLO",
+        "YOLOv12",
         "MQTT",
+        "WebSocket",
+        "TensorRT",
       ],
       links: [
         {
@@ -260,54 +294,24 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "/traffic.webp",
-      video: "",
     },
     {
-      title: "Post Invest Pro",
-      href: "https://post-invest-pro-frontend.vercel.app/",
-      dates: "2024",
-      meta: "FinTech Platform",
-      active: true,
-      description:
-        "Built an AI-powered investment platform for 500+ agents and brokers, combining portfolio tracking and analytics. Automated data analysis and predictive insights, improving processing efficiency by 30%, with an interactive Next.js dashboard.",
-      technologies: [
-        "Next.js",
-        "Typescript",
-        "MySQL",
-        "Sequelize",
-        "TailwindCSS",
-        "Node.js",
-        "Nginx",
-      ],
-      links: [
-        {
-          type: "GitHub",
-          href: "https://github.com/hariharan2604/PostInvest-Pro",
-          icon: <Icons.github className="size-3" />,
-        },
-      ],
-      image: "/investment.webp",
-      video: "",
-    },
-
-    {
-      title: "Smart Campus Management Dashboard",
+      title: "Smart Campus Hybrid Detection",
       dates: "2023",
       meta: "Smart Campus",
       href: "https://github.com/hariharan2604/Smart-Campus-Manager",
       active: true,
       description:
-        "Created a smart-campus dashboard using Next.js, Python, and OpenCV to monitor resources and support allocation decisions, improving resource-allocation efficiency by 20%.",
+        "Built a computer-vision pipeline that combines YOLO segmentation with Faster R-CNN object detection on image and video inputs. The project uses Python, OpenCV, PyTorch, and TorchVision, with WebSocket support for streamed results.",
       technologies: [
-        "Next.js",
-        "React",
         "Python",
+        "OpenCV",
+        "PyTorch",
+        "TorchVision",
         "YOLO",
         "Faster R-CNN",
-        "TensorFlow",
-        "MongoDB",
-        "TailwindCSS",
+        "WebSocket",
+        "TensorRT",
       ],
       links: [
         {
@@ -316,8 +320,6 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "/campus_manager.webp",
-      video: "",
     },
   ],
 } as const;

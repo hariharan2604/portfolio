@@ -8,13 +8,13 @@ import React from "react";
 
 interface Props {
   index: number;
+  featured?: boolean;
   title: string;
   href?: string;
   description: string;
   dates: string;
   meta?: string;
   tags: readonly string[];
-  link?: string;
   image?: string;
   video?: string;
   links?: readonly {
@@ -27,13 +27,13 @@ interface Props {
 
 export function ProjectCard({
   index,
+  featured = false,
   title,
   href,
   description,
   dates,
   meta,
   tags,
-  link,
   image,
   video,
   links,
@@ -87,18 +87,26 @@ export function ProjectCard({
   return (
     <article
       className={cn(
-        "group flex h-full flex-col border-t-2 border-foreground/80 pt-3",
+        "group flex h-full flex-col border-t-2 pt-3 transition-colors",
+        featured
+          ? "border-primary bg-primary/[0.025] px-4 pb-4 sm:px-5 sm:pb-5"
+          : "border-foreground/80",
         className
       )}
     >
       <div className="mb-3 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
-        <span>
+        <span className="truncate">
           <span className="text-primary">{String(index).padStart(2, "0")}</span>
           {" / "}{meta || "Project"}
         </span>
-        <span>{dates || "—"}</span>
+        {dates && <span className="ml-3 shrink-0">{dates}</span>}
       </div>
-      <div className="relative mb-4 aspect-[16/9] overflow-hidden border border-border bg-secondary/50">
+      <div
+        className={cn(
+          "relative mb-4 aspect-[16/9] overflow-hidden border border-border bg-secondary/50",
+          featured && "border-primary/30"
+        )}
+      >
         {href ? (
           <Link
             href={href}
@@ -108,21 +116,30 @@ export function ProjectCard({
             className="absolute inset-0 transition-opacity hover:opacity-90"
           >
             {media}
+            {featured && (
+              <span className="absolute left-3 top-3 border border-primary/50 bg-background/95 px-2.5 py-1 font-mono text-[9px] uppercase tracking-wider text-primary">
+                Featured work
+              </span>
+            )}
             <span className="absolute right-3 top-3 flex size-8 items-center justify-center border border-white/40 bg-black/60 text-white">
               <ArrowUpRight aria-hidden="true" className="size-4" />
             </span>
           </Link>
         ) : (
-          media
+          <>
+            {media}
+            {featured && (
+              <span className="absolute left-3 top-3 border border-primary/50 bg-background/95 px-2.5 py-1 font-mono text-[9px] uppercase tracking-wider text-primary">
+                Featured work
+              </span>
+            )}
+          </>
         )}
       </div>
       <div className="flex flex-1 flex-col">
         <h3 className="min-h-12 text-lg font-semibold leading-snug tracking-tight sm:text-xl">
           {title}
         </h3>
-        <div className="hidden text-xs underline print:visible">
-          {link?.replace("https://", "").replace("www.", "").replace("/", "")}
-        </div>
         <Markdown className="prose prose-sm mt-3 max-w-none text-pretty leading-6 text-muted-foreground prose-p:my-0 dark:prose-invert">
           {description}
         </Markdown>
