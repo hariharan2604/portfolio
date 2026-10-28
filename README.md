@@ -4,7 +4,7 @@ A personal developer portfolio built with Next.js, React, TypeScript, and Tailwi
 
 ## Requirements
 
-- Node.js 18 or later
+- Node.js 20.9 or later
 - Yarn 4.18.1 (Corepack is recommended)
 
 ## Getting started

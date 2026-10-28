@@ -9,11 +9,9 @@ export function TypingName({ name }: { name: string }) {
 
   useEffect(() => {
     if (prefersReducedMotion) {
-      setTypedName(name);
       return;
     }
 
-    setTypedName("");
     let position = 0;
     const interval = window.setInterval(() => {
       position += 1;
@@ -27,11 +25,13 @@ export function TypingName({ name }: { name: string }) {
     return () => window.clearInterval(interval);
   }, [name, prefersReducedMotion]);
 
+  const visibleName = prefersReducedMotion ? name : typedName;
+
   return (
     <span>
       <span className="sr-only">{name}</span>
       <span aria-hidden="true">
-        {typedName}
+        {visibleName}
         <span className="ml-1 inline-block h-[0.8em] w-[0.08em] translate-y-[0.06em] animate-[typing-caret_1s_steps(2,start)_infinite] bg-primary motion-reduce:animate-none" />
       </span>
     </span>
