@@ -1,16 +1,16 @@
 "use client";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardHeader } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
-import { ChevronRightIcon } from "lucide-react";
+import { ArrowUpRight, ChevronDown } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import React from "react";
 
 interface ResumeCardProps {
   logoUrl: string;
+  logoShape?: "wide" | "square";
   altText: string;
   title: string;
   subtitle?: string;
@@ -18,10 +18,12 @@ interface ResumeCardProps {
   badges?: readonly string[];
   period: string;
   description?: string;
-  location?:string
+  location?: string;
 }
+
 export const ResumeCard = ({
   logoUrl,
+  logoShape = "square",
   altText,
   title,
   subtitle,
@@ -29,85 +31,100 @@ export const ResumeCard = ({
   badges,
   period,
   description,
-  location
+  location,
 }: ResumeCardProps) => {
   const [isExpanded, setIsExpanded] = React.useState(false);
 
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    if (description) {
-      e.preventDefault();
-      setIsExpanded(!isExpanded);
-    }
-  };
-
   return (
-    <Link
-      href={href || "#"}
-      className="block cursor-pointer"
-      onClick={handleClick}
-    >
-      <Card className="flex">
-        <div className="flex-none">
-          <Avatar className="border size-12 m-auto bg-muted-background dark:bg-foreground">
-            <AvatarImage
-              src={logoUrl}
-              alt={altText}
-              className="object-contain"
-            />
-            <AvatarFallback>{altText[0]}</AvatarFallback>
-          </Avatar>
-        </div>
-        <div className="flex-grow ml-4 items-center flex-col group">
-          <CardHeader>
-            <div className="flex items-center justify-between gap-x-2 text-base">
-              <h3 className="inline-flex items-center justify-center font-semibold leading-none text-xs sm:text-sm">
-                {title}
-                {badges && (
-                  <span className="inline-flex gap-x-1">
-                    {badges.map((badge, index) => (
-                      <Badge
-                        variant="secondary"
-                        className="align-middle text-xs"
-                        key={index}
-                      >
-                        {badge}
-                      </Badge>
-                    ))}
-                  </span>
-                )}
-                <ChevronRightIcon
-                  className={cn(
-                    "size-4 translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100",
-                    isExpanded ? "rotate-90" : "rotate-0"
-                  )}
-                />
-              </h3>
-              <div className="text-xs sm:text-sm tabular-nums text-muted-foreground text-right">
-                {period}
-              </div>
-            </div>
-            {subtitle && <div className="font-sans text-xs">{subtitle}</div>}
-            {location && <div className="font-sans text-xs">{location}</div>}
-          </CardHeader>
-          {description && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{
-                opacity: isExpanded ? 1 : 0,
-
-                height: isExpanded ? "auto" : 0,
-              }}
-              transition={{
-                duration: 0.7,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className="mt-2 text-xs sm:text-sm"
-            >
-              {description}
-            </motion.div>
+    <article className="border-b border-border py-4 first:border-t">
+      <button
+        type="button"
+        aria-expanded={isExpanded}
+        onClick={() => setIsExpanded((expanded) => !expanded)}
+        className="group flex w-full items-start gap-4 text-left"
+      >
+        <span
+          className={cn(
+            "relative shrink-0 overflow-hidden rounded-none border border-border bg-white",
+            logoShape === "wide" ? "h-10 w-16" : "size-10"
           )}
-        </div>
-      </Card>
-    </Link>
+        >
+          <Image
+            src={logoUrl}
+            alt={altText}
+            fill
+            sizes={logoShape === "wide" ? "64px" : "40px"}
+            className="object-contain p-1.5"
+          />
+        </span>
+        <span className="min-w-0 flex-1">
+          <span className="flex flex-wrap items-start justify-between gap-x-3 gap-y-1">
+            <span className="text-sm font-semibold leading-5 text-foreground sm:text-base">
+              {title}
+            </span>
+            <span className="font-mono text-right text-[10px] leading-5 text-muted-foreground sm:text-xs">
+              {period}
+            </span>
+          </span>
+          {subtitle && (
+            <span className="mt-1 block text-sm text-muted-foreground">
+              {subtitle}
+            </span>
+          )}
+          {location && (
+            <span className="mt-1 block text-xs text-muted-foreground/80">
+              {location}
+            </span>
+          )}
+          {badges && badges.length > 0 && (
+            <span className="mt-2 flex flex-wrap gap-1">
+              {badges.map((badge) => (
+                <Badge
+                  variant="secondary"
+                  className="rounded-full text-[10px]"
+                  key={badge}
+                >
+                  {badge}
+                </Badge>
+              ))}
+            </span>
+          )}
+        </span>
+        <ChevronDown
+          aria-hidden="true"
+          className={cn(
+            "mt-1 size-4 shrink-0 text-muted-foreground transition-transform duration-200 group-hover:text-primary",
+            isExpanded && "rotate-180"
+          )}
+        />
+      </button>
+      {description && (
+        <motion.div
+          initial={false}
+          animate={{
+            opacity: isExpanded ? 1 : 0,
+            height: isExpanded ? "auto" : 0,
+          }}
+          transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+          className="overflow-hidden"
+        >
+          <div className="ml-14 border-t border-border pt-4 text-sm leading-6 text-muted-foreground">
+            <p>{description}</p>
+            {href && (
+              <Link
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+                onClick={(event) => event.stopPropagation()}
+                className="mt-3 inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wide text-primary transition-colors hover:text-foreground"
+              >
+                Visit website
+                <ArrowUpRight aria-hidden="true" className="size-3.5" />
+              </Link>
+            )}
+          </div>
+        </motion.div>
+      )}
+    </article>
   );
 };

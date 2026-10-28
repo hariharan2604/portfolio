@@ -8,28 +8,57 @@ export const DATA = {
   location: "India",
   locationLink: "https://www.google.com/maps/place/India",
   description:
-    "Innovative and results-driven software engineer with a strong foundation in computer science principles and hands-on experience in fullstack development.",
+    "Java backend engineer building secure, scalable microservices and REST APIs with Spring Boot, Spring Data, and SQL.",
   summary:
-    "I’m a technology enthusiast, passionate about software development, system design, and creating efficient, scalable solutions. I love learning continuously, taking on new challenges, and contributing to projects that make a meaningful impact.",
+    "Java backend engineer with experience building and maintaining enterprise-grade microservices and REST APIs for large-scale e-commerce systems. Strong in Java, Spring Boot, Spring MVC, Spring Data JPA/Hibernate, Spring Security, SQL, and DB2/MySQL. Improved API performance and build efficiency through query optimization, caching, payload improvements, and streamlined bundling. Experienced with Docker, AWS, Git, API testing, and Agile delivery.",
   avatarUrl: "/profile.jpg",
-  skills: [
-    "Java",
-    "C",
-    "C++",
-    "Python",
-    "Typescript",
-    "JavaScript",
-    "Angular",
-    "React.js",
-    "Next.js",
-    "Node.js",
-    "Express.js",
-    "Spring Boot",
-    "Docker",
-    "MySQL",
-    "MongoDB",
-    "AWS",
-    "Git",
+  resumeUrl: "/hariharan-jayachandran-resume.pdf",
+  featuredSkills: ["Java", "Spring Boot", "REST APIs", "MySQL", "Docker"],
+  skillGroups: [
+    {
+      title: "Languages",
+      skills: ["Java", "Python", "TypeScript", "JavaScript"],
+    },
+    {
+      title: "Backend & APIs",
+      skills: [
+        "Spring Boot",
+        "Spring MVC",
+        "Spring Data JPA",
+        "Spring Security",
+        "Hibernate",
+        "REST APIs",
+        "Microservices",
+        "Node.js",
+        "Express.js",
+      ],
+    },
+    {
+      title: "Frontend",
+      skills: ["React.js", "Next.js", "HTML5", "CSS3", "Bootstrap"],
+    },
+    {
+      title: "Databases & data",
+      skills: ["DB2", "MySQL", "MongoDB", "SQL", "Query Optimization"],
+    },
+    {
+      title: "Testing & quality",
+      skills: ["JUnit", "Mockito", "Postman"],
+    },
+    {
+      title: "Cloud & delivery",
+      skills: ["AWS", "Docker", "Nginx", "Gradle", "Maven", "Git", "GitHub"],
+    },
+    {
+      title: "Core practices",
+      skills: [
+        "Data Structures & Algorithms",
+        "Object-Oriented Design",
+        "Design Patterns",
+        "System Design",
+        "Agile",
+      ],
+    },
   ],
   navbar: [{ href: "/", icon: HomeIcon, label: "Home" }],
   contact: {
@@ -48,6 +77,12 @@ export const DATA = {
         icon: Icons.linkedin,
         navbar: true,
       },
+      LeetCode: {
+        name: "LeetCode",
+        url: "https://leetcode.com/u/hariharan_2604/",
+        icon: Icons.leetcode,
+        navbar: true,
+      },
       email: {
         name: "Send Email",
         url: "mailto:hariharanjayachandran04@gmail.com",
@@ -63,17 +98,22 @@ export const DATA = {
       href: "https://www.tcs.com/",
       location: "Chennai, India",
       title: "Systems Engineer",
-      logoUrl: "/TCS-logo-black-CMYK.svg",
+      logoUrl: "/tcs-logo-cropped.png",
+      logoShape: "wide",
       start: "Aug 2025",
       end: "Aug 2026",
       description:
-        "Designed and developed enterprise-grade backend systems using Java and Spring Boot, delivering scalable microservices and RESTful API solutions for large-scale client engagements. Built and maintained RESTful APIs supporting high-throughput workflows with a focus on performance, reliability, and clean interface design across distributed services.",
+        "Designed and developed enterprise backend systems for a large-scale e-commerce client, contributing to 4–6 microservices and REST APIs. Built high-throughput services with Java, Spring Boot, Spring MVC, and Spring Data JPA/Hibernate; implemented persistence using DB2 and optimized SQL queries. Applied Spring Security for authentication and access control, and collaborated with QA, analysts, and product owners in Agile ceremonies. Used Git and established engineering practices to maintain production applications.",
       technologies: [
         "Java",
         "Spring Boot",
-        "REST APIs",
-        "Microservices",
+        "Spring MVC",
+        "Spring Data JPA",
+        "Spring Security",
+        "Hibernate",
+        "DB2",
         "SQL",
+        "Microservices",
         "Git",
       ],
     },
@@ -83,10 +123,11 @@ export const DATA = {
       location: "Chennai, India",
       title: "Backend Development Intern",
       logoUrl: "/novac.svg",
+      logoShape: "wide",
       start: "Aug 2023",
       end: "Dec 2023",
       description:
-        "Optimized API performance, achieving a 40% improvement in response times. Implemented efficient query optimizations, caching mechanisms, and payload reductions, increasing user satisfaction by 25%. Replaced Webpack with ESbuild, reducing bundling times by 80% and accelerating deployment cycles.",
+        "Improved API response times by 40% through SQL query optimization, caching, and efficient payload handling, contributing to a 25% increase in user satisfaction. Replaced Webpack with ESBuild, reducing bundling time by 80% and accelerating CI/CD execution. Developed and maintained backend functionality with Express.js and MySQL, working with Git and Nginx.",
       technologies: [
         "Express.js",
         "MySQL",
@@ -108,23 +149,109 @@ export const DATA = {
       start: "July 2021",
       end: "July 2025",
       description:
-        "Pursuing a Bachelor’s degree in Information Technology with a focus on software development, algorithms, and system design. Gained hands-on experience in full-stack development, cloud computing, and database management through coursework and projects. Actively participating in hackathons and tech communities to enhance problem-solving skills and collaboration.",
+        "Bachelor of Technology in Information Technology. Graduated with a CGPA of 8.76/10, building a foundation in software engineering, algorithms, databases, and system design.",
     },
   ],
   projects: [
     {
+      title: "Splitwise MVP API",
+      dates: "2026",
+      meta: "Backend API",
+      active: true,
+      href: "https://github.com/hariharan2604/splitwise",
+      image: undefined,
+      video: "",
+      links: [
+        {
+          type: "GitHub",
+          href: "https://github.com/hariharan2604/splitwise",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      description:
+        "Built an expense-sharing API with Node.js, Express, Sequelize, and MySQL. Supports equal, exact, and percentage expense splits, expense activity over date ranges, and per-currency balances.",
+      technologies: [
+        "Node.js",
+        "Express",
+        "Sequelize",
+        "MySQL",
+        "REST APIs",
+      ],
+    },
+    {
+      title: "Water & Power Monitor",
+      dates: "",
+      meta: "IoT Dashboard",
+      active: true,
+      href: "https://github.com/hariharan2604/Water_analysis_front",
+      image: undefined,
+      video: "",
+      links: [
+        {
+          type: "Frontend",
+          href: "https://github.com/hariharan2604/Water_analysis_front",
+          icon: <Icons.github className="size-3" />,
+        },
+        {
+          type: "Backend",
+          href: "https://github.com/hariharan2604/Water_analysis_backend",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      description:
+        "Built a live dashboard for two homes that displays water-tank levels, instant power, pump status, and monthly electricity usage. The React interface receives sensor readings over WebSocket and fetches monthly usage from an Express and MongoDB API.",
+      technologies: [
+        "React",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "WebSocket",
+        "IoT",
+      ],
+    },
+    {
+      title: "Resource Booking System",
+      dates: "",
+      meta: "Backend API",
+      active: true,
+      href: "https://github.com/hariharan2604/resource-booking-system",
+      image: undefined,
+      video: "",
+      links: [
+        {
+          type: "GitHub",
+          href: "https://github.com/hariharan2604/resource-booking-system",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      description:
+        "Built a resource-booking backend with Java 21 and Spring Boot 4, exposing REST APIs to manage users, resources, and bookings. Added JWT authentication and role-based access control with Spring Security, layered controllers, services, and repositories, and MySQL persistence using Spring Data JPA/Hibernate. Added JUnit and Mockito tests for booking validation, and containerized the service with Docker.",
+      technologies: [
+        "Java 21",
+        "Spring Boot 4",
+        "Spring Security",
+        "JWT",
+        "MySQL",
+        "JPA / Hibernate",
+        "JUnit",
+        "Mockito",
+        "Docker",
+        "Gradle",
+      ],
+    },
+    {
       title: "AI-based Traffic Control System",
       dates: "2025",
+      meta: "Computer Vision",
       href: "https://github.com/hariharan2604/AI-Based-Traffic-Control",
       active: true,
       description:
-        "Developed an AI-driven traffic management system leveraging YOLO (You Only Look Once) for real-time object detection and Ant Colony Optimization (ACO) to optimize traffic signal timings. The system significantly reduces congestion by dynamically adjusting signal durations based on live traffic density.",
+        "Built a computer-vision prototype that detects real-time vehicle density with Python, OpenCV, and YOLO to adjust traffic signals. Added MQTT-based emergency-vehicle notifications.",
       technologies: [
         "Python",
-        "YOLO",
-        "Ant Colony Optimization",
         "OpenCV",
-        "Deep Learning",
+        "YOLO",
+        "MQTT",
       ],
       links: [
         {
@@ -140,9 +267,10 @@ export const DATA = {
       title: "Post Invest Pro",
       href: "https://post-invest-pro-frontend.vercel.app/",
       dates: "2024",
+      meta: "FinTech Platform",
       active: true,
       description:
-        "Developed an advanced AI-powered investment management platform to optimize portfolio tracking and analytics for over 500 agents and brokers. Integrated automated data analysis and predictive insights to improve decision-making. The system enhanced processing efficiency by 30% and provided real-time financial analytics through an interactive Next.js dashboard.",
+        "Built an AI-powered investment platform for 500+ agents and brokers, combining portfolio tracking and analytics. Automated data analysis and predictive insights, improving processing efficiency by 30%, with an interactive Next.js dashboard.",
       technologies: [
         "Next.js",
         "Typescript",
@@ -166,10 +294,11 @@ export const DATA = {
     {
       title: "Smart Campus Management Dashboard",
       dates: "2023",
+      meta: "Smart Campus",
       href: "https://github.com/hariharan2604/Smart-Campus-Manager",
       active: true,
       description:
-        "Developed a deep learning-powered Smart Campus Management Dashboard utilizing YOLO and Faster R-CNN for real-time resource monitoring and optimization. The AI system analyzes campus activities, improving resource allocation efficiency by 20%. The project includes an interactive Next.js dashboard for visualization and control.",
+        "Created a smart-campus dashboard using Next.js, Python, and OpenCV to monitor resources and support allocation decisions, improving resource-allocation efficiency by 20%.",
       technologies: [
         "Next.js",
         "React",

@@ -1,21 +1,18 @@
 import { Badge } from "@/components/ui/badge";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import Markdown from "react-markdown";
+import React from "react";
 
 interface Props {
+  index: number;
   title: string;
   href?: string;
   description: string;
   dates: string;
+  meta?: string;
   tags: readonly string[];
   link?: string;
   image?: string;
@@ -29,10 +26,12 @@ interface Props {
 }
 
 export function ProjectCard({
+  index,
   title,
   href,
   description,
   dates,
+  meta,
   tags,
   link,
   image,
@@ -40,77 +39,132 @@ export function ProjectCard({
   links,
   className,
 }: Props) {
-  return (
-    <Card
-      className={
-        "flex flex-col overflow-hidden border hover:shadow-lg transition-all duration-300 ease-out h-full"
-      }
-    >
-      <Link
-        href={href || "#"}
-        className={cn("block cursor-pointer", className)}
-      >
-        {video && (
-          <video
-            src={video}
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="pointer-events-none mx-auto h-40 w-full object-cover object-top" // needed because random black line at bottom of video
-          />
-        )}
-        {image && (
-          <Image
-            src={image}
-            alt={title}
-            width={500}
-            height={300}
-            className="h-40 w-full overflow-hidden object-cover object-top"
-          />
-        )}
-      </Link>
-      <CardHeader className="px-2">
-        <div className="space-y-1">
-          <CardTitle className="mt-1 text-base">{title}</CardTitle>
-          <time className="font-sans text-xs">{dates}</time>
-          <div className="hidden font-sans text-xs underline print:visible">
-            {link?.replace("https://", "").replace("www.", "").replace("/", "")}
+  const media = video ? (
+    <video
+      src={video}
+      autoPlay
+      loop
+      muted
+      playsInline
+      className="size-full object-cover object-top"
+    />
+  ) : image ? (
+    <Image
+      src={image}
+      alt={title}
+      fill
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 560px"
+      className="object-cover object-top"
+    />
+  ) : (
+    <div className="relative flex size-full flex-col justify-between overflow-hidden bg-secondary/60 p-5 sm:p-7">
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 opacity-60 [background-image:linear-gradient(hsl(var(--foreground)/0.07)_1px,transparent_1px),linear-gradient(90deg,hsl(var(--foreground)/0.07)_1px,transparent_1px)] [background-size:20px_20px]"
+      />
+      <div className="relative flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.16em] text-muted-foreground">
+        <span className="truncate">{title}</span>
+        <span className="ml-3 shrink-0">Project brief</span>
+      </div>
+      <div className="relative grid grid-cols-3 items-center gap-2 sm:gap-3">
+        {tags.slice(0, 3).map((technology, layerIndex) => (
+          <div
+            className="flex min-h-16 flex-col justify-between border border-border bg-background/90 p-2.5 sm:p-3"
+            key={technology}
+          >
+            <span className="font-mono text-[9px] text-primary">
+              0{layerIndex + 1}
+            </span>
+            <span className="truncate text-[10px] font-medium sm:text-xs">
+              {technology}
+            </span>
           </div>
-          <Markdown className="prose max-w-full text-pretty font-sans text-xs text-muted-foreground dark:prose-invert">
-            {description}
-          </Markdown>
+        ))}
+      </div>
+    </div>
+  );
+
+  return (
+    <article
+      className={cn(
+        "group flex h-full flex-col border-t-2 border-foreground/80 pt-3",
+        className
+      )}
+    >
+      <div className="mb-3 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
+        <span>
+          <span className="text-primary">{String(index).padStart(2, "0")}</span>
+          {" / "}{meta || "Project"}
+        </span>
+        <span>{dates || "—"}</span>
+      </div>
+      <div className="relative mb-4 aspect-[16/9] overflow-hidden border border-border bg-secondary/50">
+        {href ? (
+          <Link
+            href={href}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`View ${title}`}
+            className="absolute inset-0 transition-opacity hover:opacity-90"
+          >
+            {media}
+            <span className="absolute right-3 top-3 flex size-8 items-center justify-center border border-white/40 bg-black/60 text-white">
+              <ArrowUpRight aria-hidden="true" className="size-4" />
+            </span>
+          </Link>
+        ) : (
+          media
+        )}
+      </div>
+      <div className="flex flex-1 flex-col">
+        <h3 className="min-h-12 text-lg font-semibold leading-snug tracking-tight sm:text-xl">
+          {title}
+        </h3>
+        <div className="hidden text-xs underline print:visible">
+          {link?.replace("https://", "").replace("www.", "").replace("/", "")}
         </div>
-      </CardHeader>
-      <CardContent className="mt-auto flex flex-col px-2">
-        {tags && tags.length > 0 && (
-          <div className="mt-2 flex flex-wrap gap-1">
-            {tags?.map((tag) => (
+        <Markdown className="prose prose-sm mt-3 max-w-none text-pretty leading-6 text-muted-foreground prose-p:my-0 dark:prose-invert">
+          {description}
+        </Markdown>
+        {tags.length > 0 && (
+          <div className="mt-auto flex min-h-16 flex-wrap content-start gap-1.5 pt-4">
+            {tags.slice(0, 6).map((tag) => (
               <Badge
-                className="px-1 py-0 text-[10px]"
+                className="rounded-sm border border-border bg-transparent px-2 py-1 font-mono text-[9px] font-normal text-muted-foreground"
                 variant="secondary"
                 key={tag}
               >
                 {tag}
               </Badge>
             ))}
+            {tags.length > 6 && (
+              <Badge
+                variant="secondary"
+                className="rounded-sm border border-border bg-transparent px-2 py-1 font-mono text-[9px] font-normal text-muted-foreground"
+              >
+                +{tags.length - 6}
+              </Badge>
+            )}
           </div>
         )}
-      </CardContent>
-      <CardFooter className="px-2 pb-2">
-        {links && links.length > 0 && (
-          <div className="flex flex-row flex-wrap items-start gap-1">
-            {links?.map((link, idx) => (
-              <Link href={link?.href} key={idx} target="_blank">
-                <Badge key={idx} className="flex gap-2 px-2 py-1 text-[10px]">
-                  {link.icon}
-                  {link.type}
-                </Badge>
-              </Link>
-            ))}
-          </div>
-        )}
-      </CardFooter>
-    </Card>
+      </div>
+      {links && links.length > 0 && (
+        <div className="mt-4 flex flex-wrap gap-2 border-t border-border pt-3">
+          {links.map((projectLink) => (
+            <Link
+              href={projectLink.href}
+              key={projectLink.href}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-wide text-muted-foreground transition-colors hover:text-primary"
+            >
+              {projectLink.icon}
+              {projectLink.type}
+              <ArrowUpRight aria-hidden="true" className="size-3" />
+            </Link>
+          ))}
+        </div>
+      )}
+    </article>
   );
 }

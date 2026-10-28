@@ -3,142 +3,195 @@
 @tailwind utilities;
 
 @layer base {
-    :root {
-      --background: 0 0% 100%;
-      --foreground: 210 11.1% 3.53%;
-
-      --card: 0 0% 100%;
-      --card-foreground: 210 11.1% 3.53%;
-
-      --popover: 0 0% 100%;
-      --popover-foreground: 210 11.1% 3.53%;
-
-      --primary: 0 0% 9%;
-      --primary-foreground: 0 0% 98%;
-
-      --secondary: 0 0% 96.1%;
-      --secondary-foreground: 0 0% 9%;
-
-      --muted: 0 0% 96.1%;
-      --muted-foreground: 0 0% 45.1%;
-
-      --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
-
-      --destructive: 0 84.2% 60.2%;
-      --destructive-foreground: 0 0% 98%;
-
-      --border: 0 0% 89.8%;
-      --input: 0 0% 89.8%;
-      --ring: 0 0% 3.9%;
-
-      --radius: 0.5rem;
-    }
-
-    .dark {
-      --background: 210 11.1% 3.53%;
-      --foreground: 0 0% 98%;
-
-      --card: 210 11.1% 3.53%;
-      --card-foreground: 0 0% 98%;
-
-      --popover: 210 11.1% 3.53%;
-      --popover-foreground: 0 0% 98%;
-
-      --primary: 0 0% 98%;
-      --primary-foreground: 0 0% 9%;
-
-      --secondary: 0 0% 14.9%;
-      --secondary-foreground: 0 0% 98%;
-
-      --muted: 0 0% 14.9%;
-      --muted-foreground: 0 0% 63.9%;
-
-      --accent: 0 0% 14.9%;
-      --accent-foreground: 0 0% 98%;
-
-      --destructive: 0 62.8% 30.6%;
-      --destructive-foreground: 0 0% 98%;
-
-      --border: 0 0% 14.9%;
-      --input: 0 0% 14.9%;
-      --ring: 0 0% 83.1%;
-    }
+  :root {
+    --background: 40 22% 96%;
+    --foreground: 220 16% 11%;
+    --card: 40 30% 98%;
+    --card-foreground: 220 16% 11%;
+    --popover: 40 30% 98%;
+    --popover-foreground: 220 16% 11%;
+    --primary: 18 82% 48%;
+    --primary-foreground: 40 30% 98%;
+    --secondary: 38 14% 91%;
+    --secondary-foreground: 220 14% 18%;
+    --muted: 38 14% 91%;
+    --muted-foreground: 220 8% 42%;
+    --accent: 18 40% 91%;
+    --accent-foreground: 18 82% 34%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 38 11% 81%;
+    --input: 38 11% 81%;
+    --ring: 18 82% 48%;
+    --radius: 0.25rem;
   }
 
-  @layer base {
-    * {
-      @apply border-border;
-    }
-    body {
-      @apply bg-background text-foreground;
-    }
+  .dark {
+    --background: 220 15% 8%;
+    --foreground: 40 18% 92%;
+    --card: 220 13% 11%;
+    --card-foreground: 40 18% 92%;
+    --popover: 220 13% 11%;
+    --popover-foreground: 40 18% 92%;
+    --primary: 18 82% 58%;
+    --primary-foreground: 220 15% 8%;
+    --secondary: 220 10% 16%;
+    --secondary-foreground: 40 18% 89%;
+    --muted: 220 10% 16%;
+    --muted-foreground: 220 8% 65%;
+    --accent: 18 25% 18%;
+    --accent-foreground: 18 82% 69%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 8% 25%;
+    --input: 220 8% 25%;
+    --ring: 18 82% 58%;
   }
 
-  h3 code {
-    @apply !text-lg md:!text-xl;
-  }
-  
-  pre {
-    @apply !px-0 rounded-lg overflow-x-auto py-4
-  }
-   
-  pre [data-line] {
-    @apply px-4
+  * {
+    @apply border-border;
   }
 
-  code {
-    @apply text-sm md:text-base !leading-loose;
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
   }
-  
-  pre > code {
-    counter-reset: line;
+
+  body {
+    @apply min-h-screen bg-background text-foreground antialiased;
+    background-image:
+      linear-gradient(hsl(var(--foreground) / 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--foreground) / 0.035) 1px, transparent 1px);
+    background-size: 40px 40px;
   }
-  
+
+  ::selection {
+    color: hsl(var(--primary-foreground));
+    background: hsl(var(--primary));
+  }
+}
+
+.section-eyebrow {
+  @apply font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-primary;
+}
+
+.text-gradient {
+  @apply text-primary;
+}
+
+.button-primary,
+.button-secondary {
+  @apply inline-flex min-h-11 items-center justify-center gap-2 border px-5 font-mono text-[11px] font-semibold uppercase tracking-[0.08em] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+}
+
+.button-primary {
+  @apply border-foreground bg-foreground text-background hover:border-primary hover:bg-primary hover:text-primary-foreground;
+}
+
+.button-secondary {
+  @apply border-border bg-transparent text-foreground hover:border-primary hover:text-primary;
+}
+
+.console-shell {
+  isolation: isolate;
+}
+
+.console-pulse {
+  animation: console-pulse 1.8s ease-in-out infinite;
+}
+
+.console-scanline {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  pointer-events: none;
+  background: hsl(var(--primary) / 0.45);
+  box-shadow: 0 0 12px hsl(var(--primary) / 0.25);
+  animation: console-scan 7s linear infinite;
+}
+
+@keyframes console-pulse {
+  50% { opacity: 0.35; }
+}
+
+@keyframes console-scan {
+  from { transform: translateY(0); }
+  to { transform: translateY(360px); }
+}
+
+@keyframes typing-caret {
+  to { visibility: hidden; }
+}
+
+h3 code {
+  @apply !text-lg md:!text-xl;
+}
+
+pre {
+  @apply overflow-x-auto rounded-lg !px-0 py-4;
+}
+
+pre [data-line] {
+  @apply px-4;
+}
+
+code {
+  @apply !text-sm !leading-loose md:!text-base;
+}
+
+pre > code,
+code {
+  counter-reset: line;
+}
+
+code[data-theme*=" "],
+code[data-theme*=" "] span {
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
+}
+
+@media (prefers-color-scheme: dark) {
   code[data-theme*=" "],
   code[data-theme*=" "] span {
-    color: var(--shiki-light);
-    background-color: var(--shiki-light-bg);
+    color: var(--shiki-dark);
+    background-color: var(--shiki-dark-bg);
   }
-   
-  @media (prefers-color-scheme: dark) {
-    code[data-theme*=" "],
-    code[data-theme*=" "] span {
-      color: var(--shiki-dark);
-      background-color: var(--shiki-dark-bg);
-    }
-  }
-  
-  code[data-line-numbers] {
-    counter-reset: line;
-  }
-  
-  code[data-line-numbers] > [data-line]::before {
-    counter-increment: line;
-    content: counter(line);
-    @apply inline-block w-4 mr-4 text-right text-gray-500;
-  }
- 
-  code {
-    counter-reset: line;
-  }
- 
-  code > [data-line]::before {
+}
+
+code[data-line-numbers] > [data-line]::before,
+code > [data-line]::before {
   counter-increment: line;
   content: counter(line);
- 
-  /* Other styling */
   display: inline-block;
-  width: 1rem;
-  margin-right: 2rem;
+  width: 1.5rem;
+  margin-right: 1rem;
+  color: hsl(var(--muted-foreground));
   text-align: right;
-  color: gray;
 }
- 
+
 code[data-line-numbers-max-digits="2"] > [data-line]::before {
   width: 2rem;
 }
- 
+
 code[data-line-numbers-max-digits="3"] > [data-line]::before {
   width: 3rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .console-pulse,
+  .console-scanline {
+    animation: none !important;
+  }
 }
