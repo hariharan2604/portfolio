@@ -62,7 +62,7 @@ export function ProjectCard({
         aria-hidden="true"
         className="absolute inset-0 opacity-60 [background-image:linear-gradient(hsl(var(--foreground)/0.07)_1px,transparent_1px),linear-gradient(90deg,hsl(var(--foreground)/0.07)_1px,transparent_1px)] [background-size:20px_20px]"
       />
-      <div className="relative flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.16em] text-muted-foreground">
+      <div className="relative flex items-center justify-between pr-12 font-mono text-[9px] uppercase tracking-[0.16em] text-muted-foreground">
         <span className="truncate">{title}</span>
         <span className="ml-3 shrink-0">Project brief</span>
       </div>
@@ -87,25 +87,26 @@ export function ProjectCard({
   return (
     <article
       className={cn(
-        "group flex h-full flex-col border-t-2 pt-3 transition-colors",
-        featured
-          ? "border-primary bg-primary/[0.025] px-4 pb-4 sm:px-5 sm:pb-5"
-          : "border-foreground/80",
+        "group flex h-full flex-col border-t-2 border-foreground/80 pt-3 transition-colors",
         className
       )}
     >
-      <div className="mb-3 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
-        <span className="truncate">
-          <span className="text-primary">{String(index).padStart(2, "0")}</span>
-          {" / "}{meta || "Project"}
-        </span>
+      <div className="mb-3 flex items-center justify-between gap-3 font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
+        <div className="flex min-w-0 items-center gap-2">
+          <span className="truncate">
+            <span className="text-primary">{String(index).padStart(2, "0")}</span>
+            {" / "}{meta || "Project"}
+          </span>
+          {featured && (
+            <span className="shrink-0 border border-primary/50 px-1.5 py-0.5 text-[8px] tracking-wider text-primary">
+              Featured
+            </span>
+          )}
+        </div>
         {dates && <span className="ml-3 shrink-0">{dates}</span>}
       </div>
       <div
-        className={cn(
-          "relative mb-4 aspect-[16/9] overflow-hidden border border-border bg-secondary/50",
-          featured && "border-primary/30"
-        )}
+        className="relative mb-4 aspect-[16/9] overflow-hidden border border-border bg-secondary/50"
       >
         {href ? (
           <Link
@@ -116,24 +117,16 @@ export function ProjectCard({
             className="absolute inset-0 transition-opacity hover:opacity-90"
           >
             {media}
-            {featured && (
-              <span className="absolute left-3 top-3 border border-primary/50 bg-background/95 px-2.5 py-1 font-mono text-[9px] uppercase tracking-wider text-primary">
-                Featured work
-              </span>
-            )}
-            <span className="absolute right-3 top-3 flex size-8 items-center justify-center border border-white/40 bg-black/60 text-white">
-              <ArrowUpRight aria-hidden="true" className="size-4" />
-            </span>
           </Link>
         ) : (
-          <>
-            {media}
-            {featured && (
-              <span className="absolute left-3 top-3 border border-primary/50 bg-background/95 px-2.5 py-1 font-mono text-[9px] uppercase tracking-wider text-primary">
-                Featured work
-              </span>
-            )}
-          </>
+          media
+        )}
+        {href && (
+          <div className="pointer-events-none absolute right-3 top-3 z-10">
+            <span className="flex size-8 shrink-0 items-center justify-center border border-white/40 bg-black/60 text-white">
+              <ArrowUpRight aria-hidden="true" className="size-4" />
+            </span>
+          </div>
         )}
       </div>
       <div className="flex flex-1 flex-col">
