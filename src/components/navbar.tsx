@@ -2,6 +2,7 @@
 
 import { ModeToggle } from "@/components/mode-toggle";
 import { DATA } from "@/data/resume";
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
@@ -16,6 +17,8 @@ const navigation = [
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
+  const menuDuration = prefersReducedMotion ? 0 : 0.24;
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/80 bg-background/90 shadow-sm backdrop-blur-xl">
@@ -99,55 +102,70 @@ export default function Navbar() {
           </div>
         </nav>
 
-        <div
+        <motion.div
           id="mobile-navigation"
-          hidden={!isMenuOpen}
-          className="border-t border-border/80 pb-4 pt-3 lg:hidden"
+          aria-hidden={!isMenuOpen}
+          inert={!isMenuOpen}
+          initial={false}
+          animate={
+            isMenuOpen
+              ? { height: "auto", opacity: 1, y: 0 }
+              : { height: 0, opacity: 0, y: prefersReducedMotion ? 0 : -8 }
+          }
+          transition={{
+            height: { duration: menuDuration, ease: [0.16, 1, 0.3, 1] },
+            opacity: { duration: menuDuration },
+            y: { duration: menuDuration, ease: [0.16, 1, 0.3, 1] },
+          }}
+          className="overflow-hidden lg:hidden"
+          style={{ pointerEvents: isMenuOpen ? "auto" : "none" }}
         >
-          <p className="mb-2 px-1 font-mono text-[9px] uppercase tracking-[0.16em] text-muted-foreground">
-            Navigate
-          </p>
-          <div className="grid gap-1">
-            {navigation.map((item, index) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setIsMenuOpen(false)}
-                className="group flex min-h-11 items-center gap-3 border border-transparent px-3 font-mono text-xs uppercase tracking-wide text-muted-foreground transition-colors duration-200 hover:border-border hover:bg-secondary/50 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
-              >
-                <span className="text-[10px] text-primary/75">
-                  0{index + 1}
-                </span>
-                <span className="flex-1">{item.label}</span>
-                <ArrowUpRight
-                  aria-hidden="true"
-                  className="size-3.5 opacity-0 transition-opacity group-hover:opacity-100"
-                />
-              </Link>
-            ))}
-          </div>
-          <div className="mt-3 flex items-center justify-between border-t border-border/70 pt-3">
-            <span className="font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
-              Connect
-            </span>
-            <div className="flex items-center gap-1">
-              {Object.entries(DATA.contact.social)
-                .filter(([, social]) => social.navbar)
-                .map(([name, social]) => (
+          <div className="border-t border-border/80 pb-4 pt-3">
+            <p className="mb-2 px-1 font-mono text-[9px] uppercase tracking-[0.16em] text-muted-foreground">
+              Navigate
+            </p>
+            <div className="grid gap-1">
+              {navigation.map((item, index) => (
                 <Link
-                  key={name}
-                  href={social.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={name}
-                  className="inline-flex size-9 items-center justify-center border border-transparent text-muted-foreground transition-colors duration-200 hover:border-border hover:bg-secondary/60 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="group flex min-h-11 items-center gap-3 border border-transparent px-3 font-mono text-xs uppercase tracking-wide text-muted-foreground transition-colors duration-200 hover:border-border hover:bg-secondary/50 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
                 >
-                  <social.icon aria-hidden="true" className="size-4" />
+                  <span className="text-[10px] text-primary/75">
+                    0{index + 1}
+                  </span>
+                  <span className="flex-1">{item.label}</span>
+                  <ArrowUpRight
+                    aria-hidden="true"
+                    className="size-3.5 opacity-0 transition-opacity group-hover:opacity-100"
+                  />
                 </Link>
               ))}
             </div>
+            <div className="mt-3 flex items-center justify-between border-t border-border/70 pt-3">
+              <span className="font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
+                Connect
+              </span>
+              <div className="flex items-center gap-1">
+                {Object.entries(DATA.contact.social)
+                  .filter(([, social]) => social.navbar)
+                  .map(([name, social]) => (
+                    <Link
+                      key={name}
+                      href={social.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={name}
+                      className="inline-flex size-9 items-center justify-center border border-transparent text-muted-foreground transition-colors duration-200 hover:border-border hover:bg-secondary/60 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    >
+                      <social.icon aria-hidden="true" className="size-4" />
+                    </Link>
+                  ))}
+              </div>
+            </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </header>
   );
