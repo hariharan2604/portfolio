@@ -245,13 +245,13 @@ export default function Page() {
         <div className="mb-8 grid grid-cols-2 border-y border-border sm:grid-cols-3 lg:grid-cols-5">
           {DATA.featuredSkills.map((skill, index) => (
             <div
-              className="group relative flex min-h-24 flex-col justify-between border-b border-r border-border p-3 transition-colors last:border-r-0 hover:bg-primary/5 sm:min-h-28 sm:p-4 lg:border-b-0"
+              className="group relative flex min-h-24 flex-col justify-between border-b border-r border-border p-3 transition-colors duration-200 hover:bg-primary/5 last:border-r-0 sm:min-h-28 sm:p-4 lg:border-b-0"
               key={skill}
             >
               <span className="font-mono text-[9px] text-primary">
                 CORE / 0{index + 1}
               </span>
-              <span className="text-sm font-semibold tracking-tight sm:text-base">
+              <span className="text-sm font-semibold tracking-tight transition-colors duration-200 group-hover:text-primary sm:text-base">
                 {skill}
               </span>
               <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-primary transition-all duration-300 group-hover:w-full" />
@@ -272,7 +272,7 @@ export default function Page() {
                   <Badge
                     key={skill}
                     variant="secondary"
-                    className="rounded-sm border border-border bg-transparent px-2 py-1 font-mono text-[10px] font-normal text-muted-foreground transition-colors hover:border-primary hover:text-primary"
+                    className="pointer-events-none rounded-sm border border-border bg-transparent px-2 py-1 font-mono text-[10px] font-normal text-muted-foreground hover:bg-transparent"
                   >
                     {skill}
                   </Badge>
@@ -315,13 +315,16 @@ export default function Page() {
               target={social.url.startsWith("mailto:") ? undefined : "_blank"}
               rel={social.url.startsWith("mailto:") ? undefined : "noreferrer"}
               aria-label={name}
-              className="inline-flex items-center gap-1.5 transition-colors hover:text-primary"
+              className="inline-flex items-center gap-1.5 transition-colors duration-200 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               <social.icon aria-hidden="true" className="size-3.5" />
               {name === "email" ? "Email" : social.name}
             </Link>
           ))}
-          <Link href="#home" className="transition-colors hover:text-primary">
+          <Link
+            href="#home"
+            className="transition-colors duration-200 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          >
             Back to top ↑
           </Link>
         </div>

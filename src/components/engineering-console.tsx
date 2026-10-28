@@ -80,10 +80,10 @@ export function EngineeringConsole() {
               aria-controls="engineering-readout-panel"
               id={`engineering-readout-tab-${item.id}`}
               className={cn(
-                "flex min-w-0 flex-1 items-center justify-center gap-1.5 border px-1.5 py-2.5 text-left font-mono text-[9px] uppercase tracking-wide transition-colors sm:gap-2 sm:px-2 sm:text-[10px] md:w-full md:flex-none md:justify-start md:gap-3 md:px-3",
+                "flex min-w-0 flex-1 items-center justify-center gap-1.5 border px-1.5 py-2.5 text-left font-mono text-[9px] uppercase tracking-wide transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring sm:gap-2 sm:px-2 sm:text-[10px] md:w-full md:flex-none md:justify-start md:gap-3 md:px-3",
                 activePanel === item.id
                   ? "border-primary/50 bg-primary/10 text-primary"
-                  : "border-transparent text-muted-foreground hover:border-border hover:text-foreground"
+                  : "border-transparent text-muted-foreground hover:border-border hover:bg-secondary/50 hover:text-primary"
               )}
               key={item.id}
               onClick={() => setActivePanel(item.id)}

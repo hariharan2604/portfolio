@@ -41,11 +41,11 @@ export const ResumeCard = ({
         type="button"
         aria-expanded={isExpanded}
         onClick={() => setIsExpanded((expanded) => !expanded)}
-        className="group flex w-full items-start gap-4 text-left"
+        className="group flex w-full items-start gap-4 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
       >
         <span
           className={cn(
-            "relative shrink-0 overflow-hidden rounded-none border border-border bg-white",
+            "relative shrink-0 overflow-hidden rounded-none border border-border bg-white transition-colors duration-200 group-hover:border-primary group-focus-visible:border-primary",
             logoShape === "wide" ? "h-10 w-16" : "size-10"
           )}
         >
@@ -59,7 +59,7 @@ export const ResumeCard = ({
         </span>
         <span className="min-w-0 flex-1">
           <span className="flex flex-wrap items-start justify-between gap-x-3 gap-y-1">
-            <span className="text-sm font-semibold leading-5 text-foreground sm:text-base">
+            <span className="text-sm font-semibold leading-5 text-foreground transition-colors duration-200 group-hover:text-primary group-focus-visible:text-primary sm:text-base">
               {title}
             </span>
             <span className="font-mono text-right text-[10px] leading-5 text-muted-foreground sm:text-xs">
@@ -93,7 +93,7 @@ export const ResumeCard = ({
         <ChevronDown
           aria-hidden="true"
           className={cn(
-            "mt-1 size-4 shrink-0 text-muted-foreground transition-transform duration-200 group-hover:text-primary",
+            "mt-1 size-4 shrink-0 text-muted-foreground transition-[transform,color] duration-200 group-hover:translate-y-0.5 group-hover:text-primary group-focus-visible:text-primary",
             isExpanded && "rotate-180"
           )}
         />
@@ -108,7 +108,7 @@ export const ResumeCard = ({
           transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
           className="overflow-hidden"
         >
-          <div className="ml-14 border-t border-border pt-4 text-sm leading-6 text-muted-foreground">
+          <div className="ml-14 border-t border-border pt-4 pb-2 pr-4 text-sm leading-6 text-muted-foreground">
             <p>{description}</p>
             {href && (
               <Link
@@ -116,7 +116,7 @@ export const ResumeCard = ({
                 target="_blank"
                 rel="noreferrer"
                 onClick={(event) => event.stopPropagation()}
-                className="mt-3 inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wide text-primary transition-colors hover:text-foreground"
+                className="mt-3 inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wide text-primary transition-colors duration-200 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
                 Visit website
                 <ArrowUpRight aria-hidden="true" className="size-3.5" />

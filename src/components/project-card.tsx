@@ -46,7 +46,7 @@ export function ProjectCard({
       loop
       muted
       playsInline
-      className="size-full object-cover object-top"
+      className="size-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03] group-focus-within:scale-[1.03] motion-reduce:transform-none"
     />
   ) : image ? (
     <Image
@@ -54,7 +54,7 @@ export function ProjectCard({
       alt={title}
       fill
       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 560px"
-      className="object-cover object-top"
+      className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03] group-focus-within:scale-[1.03] motion-reduce:transform-none"
     />
   ) : (
     <div className="relative flex size-full flex-col justify-between overflow-hidden bg-secondary/60 p-5 sm:p-7">
@@ -87,7 +87,7 @@ export function ProjectCard({
   return (
     <article
       className={cn(
-        "group flex h-full flex-col border-t-2 border-foreground/80 pt-3 transition-colors",
+        "group flex h-full flex-col border-t-2 border-foreground/80 pt-3 transition-[border-color,transform] duration-300 hover:-translate-y-1 hover:border-primary focus-within:-translate-y-1 focus-within:border-primary motion-reduce:transform-none motion-reduce:transition-none",
         className
       )}
     >
@@ -114,7 +114,7 @@ export function ProjectCard({
             target="_blank"
             rel="noreferrer"
             aria-label={`View ${title}`}
-            className="absolute inset-0 transition-opacity hover:opacity-90"
+            className="absolute inset-0 transition-opacity duration-200 hover:opacity-90 focus-visible:z-20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
           >
             {media}
           </Link>
@@ -130,7 +130,7 @@ export function ProjectCard({
         )}
       </div>
       <div className="flex flex-1 flex-col">
-        <h3 className="min-h-12 text-lg font-semibold leading-snug tracking-tight sm:text-xl">
+        <h3 className="min-h-12 text-lg font-semibold leading-snug tracking-tight transition-colors duration-200 group-hover:text-primary group-focus-within:text-primary sm:text-xl">
           {title}
         </h3>
         <Markdown className="prose prose-sm mt-3 max-w-none text-pretty leading-6 text-muted-foreground prose-p:my-0 dark:prose-invert">
@@ -140,7 +140,7 @@ export function ProjectCard({
           <div className="mt-auto flex min-h-16 flex-wrap content-start gap-1.5 pt-4">
             {tags.slice(0, 6).map((tag) => (
               <Badge
-                className="rounded-sm border border-border bg-transparent px-2 py-1 font-mono text-[9px] font-normal text-muted-foreground"
+                className="rounded-sm border border-border bg-transparent px-2 py-1 font-mono text-[9px] font-normal text-muted-foreground hover:bg-transparent"
                 variant="secondary"
                 key={tag}
               >
@@ -150,7 +150,7 @@ export function ProjectCard({
             {tags.length > 6 && (
               <Badge
                 variant="secondary"
-                className="rounded-sm border border-border bg-transparent px-2 py-1 font-mono text-[9px] font-normal text-muted-foreground"
+                className="rounded-sm border border-border bg-transparent px-2 py-1 font-mono text-[9px] font-normal text-muted-foreground hover:bg-transparent"
               >
                 +{tags.length - 6}
               </Badge>
@@ -159,14 +159,14 @@ export function ProjectCard({
         )}
       </div>
       {links && links.length > 0 && (
-        <div className="mt-4 flex flex-wrap gap-2 border-t border-border pt-3">
+        <div className="mt-4 flex flex-wrap gap-2 border-t border-border pt-3 transition-colors group-hover:border-primary/40 group-focus-within:border-primary/40">
           {links.map((projectLink) => (
             <Link
               href={projectLink.href}
               key={projectLink.href}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-wide text-muted-foreground transition-colors hover:text-primary"
+              className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-wide text-muted-foreground transition-colors duration-200 hover:text-primary focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               {projectLink.icon}
               {projectLink.type}
