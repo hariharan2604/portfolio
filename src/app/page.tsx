@@ -343,12 +343,12 @@ export default function Page() {
               {name === "email" ? "Email" : social.name}
             </Link>
           ))}
-          <Link
+          <a
             href="#home"
             className="transition-colors duration-200 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
             Back to top ↑
-          </Link>
+          </a>
         </div>
       </footer>
     </main>
