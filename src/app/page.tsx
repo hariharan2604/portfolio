@@ -10,11 +10,7 @@ import {
   Download,
   MapPin,
 } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
-
-const profileBlurDataUrl =
-  "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAADwBACdASoYAB4APwFys1GrJqSiqAqpYCAJagCdM1XJpdeaGAIbbYwZyX67AlnrLAAAyw6rdyiW9nXoP1etXIlw4MrdtbbLqk+z5sV1hBiZGob9uXbbW9e2m0jpGenqwarpZFYfcfNnTZmU0eAAAA==";
 
 function SectionHeading({
   number,
@@ -105,22 +101,44 @@ export default function Page() {
             <span>Profile</span>
             <span>01 — 01</span>
           </div>
-          <div className="group relative aspect-[4/5] overflow-hidden border border-foreground/70 bg-muted">
-            <Image
-              src={DATA.avatarUrl}
-              alt={DATA.name}
-              fill
-              preload
-              placeholder="blur"
-              blurDataURL={profileBlurDataUrl}
-              sizes="(max-width: 420px) calc(100vw - 2.5rem), 384px"
-              className="object-cover object-[50%_25%] grayscale-[12%] transition duration-500 group-hover:scale-[1.025] group-hover:grayscale-0"
-            />
-            <div className="absolute inset-x-0 bottom-0 flex items-center justify-between bg-foreground/90 px-4 py-3 font-mono text-[10px] uppercase tracking-wider text-background">
-              <span>{DATA.initials} / {DATA.name}</span>
-              <span>Available to connect</span>
+
+          <div className="group relative aspect-[4/5] overflow-hidden rounded-[30px] border border-border/80 bg-[radial-gradient(circle_at_top,hsl(var(--primary)/0.12),transparent_32%),linear-gradient(160deg,hsl(var(--card)),hsl(var(--muted)))] p-5 shadow-[0_30px_90px_rgba(15,23,42,0.12)] transition-transform duration-500 group-hover:-translate-y-1 group-hover:shadow-[0_35px_100px_rgba(15,23,42,0.18)]">
+            <div className="absolute inset-0 bg-[linear-gradient(120deg,transparent_0%,hsl(var(--foreground)/0.06)_24%,transparent_52%,hsl(var(--foreground)/0.04)_80%,transparent_100%)] opacity-80" />
+
+            <div className="absolute inset-x-6 top-5 z-10 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.22em] text-foreground/80 sm:text-[10px]">
+              <span>Engineer</span>
+              <span className="inline-flex items-center gap-2">
+                <span className="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_12px_rgba(16,185,129,0.7)]" />
+                Available
+              </span>
+            </div>
+
+            <div className="relative flex h-full flex-col items-center justify-center px-6 pb-14 pt-10">
+              <div className="relative mb-7 flex h-28 w-28 items-center justify-center rounded-full border border-primary/40 bg-[radial-gradient(circle_at_30%_20%,hsl(var(--background)/0.85),hsl(var(--foreground)/0.04)_32%,hsl(var(--card))_100%)] text-5xl font-semibold tracking-[-0.08em] text-foreground shadow-[0_0_0_10px_hsl(var(--foreground)/0.02),0_20px_35px_rgba(15,23,42,0.18)] sm:h-32 sm:w-32 sm:text-[3.1rem]">
+                <span className="absolute inset-[10px] rounded-full border border-foreground/10" />
+                {DATA.initials}
+              </div>
+
+              <div className="text-center">
+                <p className="font-mono text-[9px] uppercase tracking-[0.34em] text-muted-foreground sm:text-[10px]">
+                  {DATA.location}
+                </p>
+                <h3 className="mt-4 text-2xl font-semibold tracking-[-0.07em] text-foreground sm:text-[2.2rem]">
+                  {DATA.name}
+                </h3>
+              </div>
+
+              <div className="mt-8 w-full max-w-[220px] rounded-full border border-foreground/10 bg-background/60 px-3 py-2 text-center font-mono text-[8px] uppercase tracking-[0.22em] text-foreground/80 shadow-inner shadow-foreground/5 backdrop-blur-sm sm:text-[9px]">
+                Java · Spring · Product
+              </div>
+            </div>
+
+            <div className="absolute inset-x-5 bottom-5 z-10 flex items-center justify-between gap-3 rounded-xl border border-foreground/10 bg-background/90 px-4 py-3 font-mono text-[9px] uppercase tracking-[0.14em] text-foreground backdrop-blur-sm sm:text-[10px]">
+              <span className="min-w-0 truncate">{DATA.initials} / {DATA.name}</span>
+              <span className="shrink-0 text-muted-foreground">Portfolio</span>
             </div>
           </div>
+
           <div className="mt-2 flex justify-between font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
             <span>Engineer · {DATA.location}</span>
             <span>{new Date().getFullYear()}</span>
@@ -210,7 +228,6 @@ export default function Page() {
                   altText={work.company}
                   title={work.company}
                   subtitle={work.title}
-                  href={work.href}
                   location={work.location}
                   period={`${work.start} – ${work.end ?? "Present"}`}
                   description={work.description}
@@ -226,7 +243,6 @@ export default function Page() {
               {DATA.education.map((education) => (
                 <ResumeCard
                   key={education.school}
-                  href={education.href}
                   logoUrl={education.logoUrl}
                   logoShape="square"
                   altText={education.school}
